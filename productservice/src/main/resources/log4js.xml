@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.product.productservice.logging">
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} %-5level %logger{36} - %msg%n" />
+        </Console>
+
+        <CloudWatchAppender name="CloudWatch"
+            logGroupName="/mi-app-test/logs"
+            logStreamName="mi-app-test-local"
+            endpoint="http://host.docker.internal:4566">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n" />
+        </CloudWatchAppender>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="CloudWatch" />
+        </Root>
+    </Loggers>
+</Configuration>
