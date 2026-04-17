@@ -5,13 +5,13 @@ spring:
   application:
     name: productservice
   kafka:
-    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:kafka:29092}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
   data:
     mongodb:
-      uri: mongodb://localhost:27017/productos
+      uri: mongodb://mongodb:27017/productos
       auto-index-creation: true
   mongodb:
     connect-timeout: 2000
@@ -24,7 +24,7 @@ spring:
         access-key: test
         secret-key: test
       cloudwatch:
-        endpoint: http://localhost:4566
+        endpoint: http://localstack:4566
       logging:
         log-group: practica-microservicios
         log-stream: productos-service
@@ -32,4 +32,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
